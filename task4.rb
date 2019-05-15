@@ -20,7 +20,12 @@ d = b**2 - 4*a*c
 puts "Дискриминант равен #{d}"
 
 if d < 0
-puts "Корней нет"
+puts "Корней нет" 
+
+elsif d == 0
+  x = -b/(2.0*a)
+  puts "x = #{x1}"
+
 else
 x1 = (-b + Math.sqrt(d))/2*a
 x2 = (-b - Math.sqrt(d))/2*a
