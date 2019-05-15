@@ -24,7 +24,7 @@ puts "Корней нет"
 
 elsif d == 0
   x = -b/(2.0*a)
-  puts "x = #{x1}"
+  puts "x = #{x}"
 
 else
 x1 = (-b + Math.sqrt(d))/2*a
