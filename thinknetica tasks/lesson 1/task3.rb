@@ -13,7 +13,7 @@ c = gets.to_f
 
 a, b, c = [a, b, c].sort!
 
-pifagor theorem = a**2 + b**2 == c**2
+pifagor_theorem = a**2 + b**2 == c**2
 
 if pifagor_theorem == true
   print('Rectangle triangle')
