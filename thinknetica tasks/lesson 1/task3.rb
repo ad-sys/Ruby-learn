@@ -16,7 +16,7 @@ a, b, c = [a, b, c].sort!
 pifagor_theorem = a**2 + b**2 == c**2
 
 if pifagor_theorem == true
-  print('Rectangle triangle')
+  print('The triangle is  rectangular')
 else
   print('The triangle is not rectangular')
 end
