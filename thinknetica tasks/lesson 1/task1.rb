@@ -5,9 +5,6 @@
 print "Hi there! What is your name?"
 name = gets.chomp
 
-print "Cool name, how much do you weight (kg)?"
-weight = gets.to_i
-
 puts "Thanks a lot #{name}" ",and what is your height (cm)?"
 puts "Put it in, and I will calculate your ideal weight in just a sec:)"
 height = gets.to_i
