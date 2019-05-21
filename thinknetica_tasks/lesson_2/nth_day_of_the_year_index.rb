@@ -16,8 +16,8 @@ days_gone = 0
 
 months_gone = month == 1 ? 0 : (month - 2)
 
-months[0..months_gone].each { |i| days_gone +=i }
+months[0..months_gone].each { |i| days_gone += i } unless months_gone.zero?
 
 count = day.to_i + days_gone
 
-puts "From the beggining of the year: #{count} days passed."
+puts "From the beginning of the year: #{count} days passed."
