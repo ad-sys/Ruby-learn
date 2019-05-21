@@ -12,6 +12,7 @@ year = gets.chomp.to_f
 months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 leap_year = (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)
+if leap_year
   months[1] = 29
 end
 
