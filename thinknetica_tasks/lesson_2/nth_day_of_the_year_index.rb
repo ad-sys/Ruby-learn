@@ -2,11 +2,11 @@
 # Найти порядковый номер даты, начиная отсчет с начала года. Учесть, что год может быть високосным.
 # (Запрещено использовать встроенные в ruby методы для этого вроде Date#yday или Date#leap?)
 # Алгоритм опредления високосного года: http://www.adm.yar.ru/arch_serv/2000/Microsoft/content/vis.htm
-print 'День: '
+print 'Day (DD): '
 day = gets.chomp.to_f
-print 'Месяц: '
+print 'Month (MM): '
 month = gets.chomp.to_f
-print 'Год: '
+print 'Year (YYY): '
 year = gets.chomp.to_f
 
 months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
