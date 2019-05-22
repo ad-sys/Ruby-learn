@@ -17,10 +17,6 @@ if leap_year
   months[1] = 29
 end
 
-count = 0
-for i in 0..month-2
-  count += months[i]
-end
-count += day
+count = day + months.take(month - 1).sum
 
 puts "From the beginning of the year: #{count} days passed."
