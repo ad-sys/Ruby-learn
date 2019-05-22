@@ -1,13 +1,14 @@
 print 'Day (DD): '
-day = gets.chomp.to_i
+day = gets.to_i
 print 'Month (MM): '
-month = gets.chomp.to_i
+month = gets.to_i
 print 'Year (YYY): '
-year = gets.chomp.to_i
+year = gets.to_i
 
 months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 leap_year = (year % 4.0 == 0) && (year % 100.0 != 0) || (year % 400.0 == 0)
+
 if leap_year
   months[1] = 29
 end

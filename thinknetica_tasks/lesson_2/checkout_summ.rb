@@ -10,14 +10,17 @@ total = 0
 loop do
   puts "Please put in the product name (type stop to finish)"
   product = gets.chomp
-  break if product == "stop"
+  break if product.downcase == "stop"
   puts "Please put in the product quantity"
   quantity = gets.to_f
   puts "Please put in the product price for 1 piece"
   price = gets.to_f
-  cart [product] = { price: price, quantity: quantity, total_price: price * quantity }
-  puts cart
-
+  cart[product] = { price: price, quantity: quantity, total_price: price * quantity }
+end
+cart.each do |name, info|
+    puts "Product: #{name}, quantity: #{info[:quantity]}, price per item: #{info[:price]}. "\
+    "total price: #{info[:total_price]}"
+  total += info[:total_price]
 end
 cart.each do |key, val|
   total += cart[key][:total_price]
