@@ -3,7 +3,7 @@ class Train
   attr_reader :number, :type
 
   def initialize(number, type, wagons)
-    @number = number
+    @number = (0...8).map { (65 + rand(26)).chr }.join
     @type = type
     @wagons = wagons
     @speed = 0
