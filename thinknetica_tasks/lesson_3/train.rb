@@ -12,7 +12,7 @@ class Train
     @speed = 0
   end
 
-  def set_speed (speed)
+  def change_speed(speed)
     @speed = speed
   end
 
@@ -24,19 +24,15 @@ class Train
     @speed = 0
   end
 
-  def add_wagons
-    if @speed.zero?
-      @wagons += 1
-    else
-      puts 'Wagons can only be added in train is not moving'
-    end
+  def add_wagon
+    return unless @speed.zero?
+
+    @wagons += 1
   end
 
-  def del_wagons
-    if @speed.zero?
-      @wagons -= 1
-    else
-      puts 'Wagons can only be cut-off in train is not moving'
-    end
+  def del_wagon
+    return unless @speed.zero?
+
+    @wagons += 1
   end
 end
