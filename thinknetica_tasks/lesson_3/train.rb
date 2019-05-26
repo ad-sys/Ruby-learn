@@ -12,12 +12,12 @@ class Train
     @speed = 0
   end
 
-  def change_speed(speed)
+  def gain_speed(speed)
     @speed = speed
   end
 
   def current_speed
-   @speed
+    @speed
   end
 
   def stop
@@ -33,10 +33,25 @@ class Train
   def del_wagon
     return unless @speed.zero?
 
-    @wagons += 1
+    @wagons -= 1
   end
 
   def current_wagons_qty
     @wagons = wagons
+  end
+  def assign_route
+
+  end
+  def change_station
+
+  end
+  def show_current_station
+
+  end
+  def show_previous_station
+
+  end
+  def show_next_station
+
   end
 end
