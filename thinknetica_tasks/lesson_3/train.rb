@@ -17,7 +17,7 @@ class Train
   end
 
   def current_speed
-    @speed
+   @speed
   end
 
   def stop
@@ -34,5 +34,9 @@ class Train
     return unless @speed.zero?
 
     @wagons += 1
+  end
+
+  def current_wagons_qty
+    @wagons = wagons
   end
 end
