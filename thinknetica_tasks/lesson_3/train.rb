@@ -1,20 +1,23 @@
+# Frozen_string_literal:true
+
+# This class describes the Train
+
 class Train
-  attr_accessor :speed
-  attr_reader :number, :type
+  attr_reader :number, :type, :wagons
 
   def initialize(number, type, wagons)
-    @number = (0...8).map { (65 + rand(26)).chr }.join
+    @number = number
     @type = type
     @wagons = wagons
     @speed = 0
   end
 
-  def gain_speed
-    @speed = speed + 10
+  def set_speed (speed)
+    @speed = speed
   end
 
-  def show_speed
-    puts @speed
+  def current_speed
+    @speed
   end
 
   def stop
@@ -22,18 +25,18 @@ class Train
   end
 
   def add_wagons
-    if @speed == 0
-      self.wagons += 1
+    if @speed.zero?
+      @wagons += 1
     else
-      puts "Wagons can only be added in train is not moving"
+      puts 'Wagons can only be added in train is not moving'
     end
   end
 
   def del_wagons
-    if @speed == 0
-      self.wagons -= 1
+    if @speed.zero?
+      @wagons -= 1
     else
-      puts "Wagons can only be cut-off in train is not moving"
+      puts 'Wagons can only be cut-off in train is not moving'
     end
   end
 end
