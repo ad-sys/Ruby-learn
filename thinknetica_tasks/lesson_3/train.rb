@@ -1,6 +1,8 @@
 # Frozen_string_literal:true
 
 # This class describes the Train
+require "./station"
+require "./route"
 
 class Train
   attr_reader :number, :type, :wagons
@@ -43,6 +45,7 @@ class Train
 
   end
   def change_station
+
 
   end
   def show_current_station
