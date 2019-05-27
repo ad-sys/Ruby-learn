@@ -51,7 +51,7 @@ class Route
   end
 end
 
-  class Train
+class Train
   attr_reader :number, :type, :wagons
   attr_reader :speed
 
@@ -81,6 +81,5 @@ end
 
     @wagons -= 1
   end
-
-  end
+end
 
