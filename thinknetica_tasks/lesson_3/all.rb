@@ -13,7 +13,7 @@ class Station
     @trains
   end
 
-  def show_trains_type(type)
+  def trains_by_type(type)
     @trains.select { |train| train.type == type }
   end
 
@@ -43,11 +43,13 @@ class Route
 
   def delete(station)
     stations.delete(station)
+    unless station == first || station == last
+    end
   end
-end
 
-class Train
+  class Train
   attr_reader :number, :type, :wagons
+  attr_reader :speed
 
   def initialize(number, type, wagons)
     @number = number
@@ -57,11 +59,7 @@ class Train
   end
 
   def gain_speed(speed)
-    @speed = speed
-  end
-
-  def current_speed
-    @speed
+    @speed += speed
   end
 
   def stop
@@ -75,12 +73,11 @@ class Train
   end
 
   def del_wagon
-    return unless @speed.zero?
+    return unless @speed.zero? && @wagons.positive?
 
     @wagons -= 1
   end
 
-  def current_wagons_qty
-    @wagons
   end
+
 end
