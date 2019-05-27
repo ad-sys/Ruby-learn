@@ -60,6 +60,19 @@ class Train
     @type = type
     @wagons = wagons
     @speed = 0
+    @current_station = @route.first
+  end
+
+  def set_route(route)
+    @route = route
+    @current_station = route.first
+  end
+  def move_forward
+    @current_station = @route.stations[@route.stations.find_index(@current_station) + 1]
+  end
+
+  def move_rewind
+    @current_station = @route.stations[@route.stations.find_index(@current_station) - 1]
   end
 
   def gain_speed(speed)
