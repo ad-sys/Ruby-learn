@@ -42,9 +42,8 @@ class Route
   end
 
   def delete(station)
+    return if outside?(station)
     stations.delete(station)
-    unless station == first || station == last
-    end
   end
 
   class Train
