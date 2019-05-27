@@ -41,6 +41,10 @@ class Route
     stations.insert(-2, station)
   end
 
+  def outside?(station)
+    station == first || station == last
+  end
+
   def delete(station)
     return if outside?(station)
     stations.delete(station)
