@@ -49,6 +49,7 @@ class Route
     return if outside?(station)
     stations.delete(station)
   end
+end
 
   class Train
   attr_reader :number, :type, :wagons
@@ -83,4 +84,3 @@ class Route
 
   end
 
-end
