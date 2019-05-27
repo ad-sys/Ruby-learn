@@ -46,6 +46,7 @@ class Route
 
   def delete(station)
     return if outside?(station)
+
     stations.delete(station)
   end
 end
@@ -66,6 +67,7 @@ class Train
     @route = route
     @current_station = route.first
   end
+
   def move_forward
     @current_station = @route.stations[@route.stations.find_index(@current_station) + 1]
   end
