@@ -94,3 +94,4 @@ class Train
     @wagons -= 1
   end
 end
+
