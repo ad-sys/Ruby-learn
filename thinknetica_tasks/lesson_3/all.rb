@@ -66,6 +66,7 @@ class Train
     @route = route
     @current_station = route.first
   end
+  
   def move_forward
     @current_station = @route.stations[@route.stations.find_index(@current_station) + 1]
   end
