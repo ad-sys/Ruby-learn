@@ -1,6 +1,7 @@
 class Station
-  def initialize(station_name)
-    @station_name = station_name
+  attr_reader :trains, :name
+  def initialize(name)
+    @name = name
     @trains = []
   end
 
@@ -36,24 +37,23 @@ class Route
     stations.last
   end
 
-  def add(station)
+  def add_station(station)
     stations.insert(-2, station)
   end
 
-  def outside?(station)
+  def border?(station)
     station == first || station == last
   end
 
-  def delete(station)
-    return if outside?(station)
+  def delete_station(station)
+    return if border?(station)
 
     stations.delete(station)
   end
 end
 
 class Train
-  attr_reader :number, :type, :wagons
-  attr_reader :speed
+  attr_reader :number, :type, :wagons, :speed
 
   def initialize(number, type, wagons)
     @number = number
@@ -65,7 +65,12 @@ class Train
 
   def set_route(route)
     @route = route
-    @current_station = route.first
+    @current_station_index = 0
+    @current_station.accept_train(self)
+  end
+
+  def current_station
+    @route.stations[@current_station_index]
   end
 
   def move_forward
