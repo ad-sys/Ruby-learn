@@ -68,18 +68,30 @@ class Train
     @current_station.accept_train(self)
   end
 
+  def next_station
+    @route.stations[@current_station_index + 1]
+  end
+
+  def previous_station
+    return unless @current_station_index.positive?
+
+    @route.stations[@current_station_index -1]
+  end
+
   def current_station
     @route.stations[@current_station_index]
   end
 
   def move_forward
-    if @current_station_index + 1 != nil
+    return if next_station.nil?
 
-    @current_station = @route.stations[@route.stations.find_index(@current_station) + 1]
-    end
+    current_station.depart(self)
+    @route.stations[@current_station_index + 1]
+
   end
 
   def move_rewind
+
     if @current_station_index + 1 != nil
 
     @current_station = @route.stations[@route.stations.find_index(@current_station) - 1]
