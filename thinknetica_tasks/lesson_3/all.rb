@@ -105,7 +105,7 @@ class Train
     @speed = 0
   end
 
-   def gain_speed(speed)
+  def gain_speed(speed)
     @speed += speed
   end
 
@@ -155,17 +155,17 @@ class Train
     return if next_station.nil?
 
     current_station.depart(self)
-    @route.stations[@current_station_index + 1]
+    next_station.accept_train(self)
 
   end
 
   def move_rewind
 
-    if @current_station_index + 1 != nil
-
-      @current_station = @route.stations[@route.stations.find_index(@current_station) - 1]
-    end
+    return if previous_station.nil?
+    current_station.depart(self)
+    previous_station.accept_train(self)
   end
 end
+
 
 
