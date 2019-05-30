@@ -105,14 +105,7 @@ class Train
     @speed = 0
   end
 
-  def set_route(route)
-    @route = route
-    @current_station_index = 0
-    @current_station.accept_train(self)
-  end
-
-
-  def gain_speed(speed)
+   def gain_speed(speed)
     @speed += speed
   end
 
@@ -136,15 +129,22 @@ class Train
 
  # Перемещение логика
 
-  def next_station
+  def set_route(route)
+    @route = route
+    @current_station_index = 0
+    @current_station.accept_train(self)
+  end
 
-    @route.stations[@current_station_index + 1] self.current_station == self.route.last
+  def next_station
+    return if next_station.nil?
+
+    @route.stations[@current_station_index + 1]
   end
 
   def previous_station
     return unless @current_station_index.positive?
 
-    @route.stations[@current_station_index -1]
+    @route.stations[@current_station_index - 1]
   end
 
   def current_station
