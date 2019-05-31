@@ -72,7 +72,7 @@ class Route
   end
 
   def print_all_stations
-    puts @stations
+    route.stations.each { |station| return station }
   end
 
 end
@@ -127,7 +127,7 @@ class Train
     @wagons -= 1
   end
 
- # Перемещение логика
+# Перемещение логика
 
   def set_route(route)
     @route = route
@@ -155,14 +155,14 @@ class Train
 
     current_station.depart(self)
     next_station.accept_train(self)
-
+    @current_station_index += 1
   end
 
   def move_rewind
-
     return if previous_station.nil?
     current_station.depart(self)
     previous_station.accept_train(self)
+    @current_station_index -= 1
   end
 end
 
