@@ -72,7 +72,7 @@ class Route
   end
 
   def print_all_stations
-    puts @route
+    puts @stations
   end
 
 end
@@ -136,7 +136,6 @@ class Train
   end
 
   def next_station
-    return if next_station.nil?
 
     @route.stations[@current_station_index + 1]
   end
