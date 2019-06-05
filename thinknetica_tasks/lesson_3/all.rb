@@ -72,7 +72,7 @@ class Route
   end
 
   def print_all_stations
-    route.stations.each { |station| return station }
+    route.stations.each { |station| puts station.name }
   end
 
 end
@@ -165,4 +165,3 @@ class Train
     @current_station_index -= 1
   end
 end
-
