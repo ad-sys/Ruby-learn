@@ -2,20 +2,35 @@ require_relative 'route'
 require_relative 'station'
 require_relative 'train'
 
-puts 'What would you like to do?'
-puts "-- Type 'add train' to add a train."
-puts "-- Type 'add station' to add a station."
-puts "-- Type 'create route' to create a route."
-puts "-- Type 'assign' to assign route to a train."
-puts "-- Type 'add wagon' to add the wagon to the train."
-puts "-- Type 'del wagon' to detach the wagon from the train."
-puts "-- Type 'move forward' to move the train to next station."
-puts "-- Type 'move rewind' to move the train to previous station."
-puts "-- Type 'show stations' to show the list of the stations"
-puts "-- Type 'show trains' to show the list of the trains on the station"
+loop do
+  puts "
+					Select an action:
+
+					1. Create station.
+					2. Create train.
+					3. Attach wagon to the train.
+					4. Detach wagon of the train.
+					5. Put the train station.
+					6. View a list of stations.
+					7. View a list of trains.
+					8. Quit the program.
+					"
+  choice = gets.chomp.to_i
+  case choice
+  when '1'
+    puts 'Please, put the train number, type and wagons quantity'
+
+
+
+  end
+end
 
 choice = gets.downcase
 case choice
 when 'add train'
+  puts 'Please, put the train number, type and wagons quantity'
+ tr
+
+
 
 end
