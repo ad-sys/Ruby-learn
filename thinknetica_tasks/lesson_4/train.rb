@@ -23,10 +23,9 @@ class Train
   def initialize(number, type, wagons)
     @number = number
     @type = type
-    @wagons = wagons
+    @wagons = []
     @speed = 0
   end
-
   def gain_speed(speed)
     @speed += speed
   end
@@ -37,11 +36,13 @@ class Train
 
 # Вагоны Логика
 
-  def add_wagon
+  def add_wagon(wagon)
     return unless @speed.zero?
+    return unless attachable_wagon?(wagon)
 
     @wagons += 1
   end
+
 
   def del_wagon
     return unless @speed.zero? && @wagons.positive?

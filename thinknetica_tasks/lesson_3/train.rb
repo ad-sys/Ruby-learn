@@ -54,6 +54,7 @@ class Train
   def set_route(route)
     @route = route
     @current_station_index = 0
+    byebug
     current_station.accept_train(self)
   end
 
