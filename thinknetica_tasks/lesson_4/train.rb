@@ -26,6 +26,7 @@ class Train
     @wagons = []
     @speed = 0
   end
+
   def gain_speed(speed)
     @speed += speed
   end
@@ -82,6 +83,7 @@ class Train
 
   def move_rewind
     return if previous_station.nil?
+
     current_station.depart(self)
     previous_station.accept_train(self)
     @current_station_index -= 1
