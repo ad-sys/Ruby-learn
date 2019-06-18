@@ -43,27 +43,26 @@ class Main
   private
 
   def show_main_menu
-  puts "
-					Select an action:
-
-					1. Create station.
-					2. Create train.
-          3. Create route
-          4. Add/Delete station within the route.
-					5. Assign the route to the train.
-          6. Attach wagon to the train.
-					7. Detach wagon of the train.
-					8. Move the train throughout the route.
-					9. View a list of trains.
-					0. Quit the program.
-					"
+  puts "1. Create station"
+  puts "2. Create train"
+  puts "3. Create route"
+  puts "4. Add station to route"
+  puts "5. Delete station from route"
+  puts "6. Assign the route to the train."
+  puts "7. Attach wagon to the train."
+  puts "8. Detach wagon of the train."
+  puts "9. Move the train throughout the route."
+  puts "10. View a list of trains."
+  puts "0. Quit the program."
   end
+
   def create_station
     puts "Please put the station's name"
     name = gets.chomp
     @stations << Station.new(name)
     puts @stations
   end
+
   def create_train
     puts 'Please type in the train name'
     name = gets.chomp

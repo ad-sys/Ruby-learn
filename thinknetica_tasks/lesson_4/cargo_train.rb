@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'train'
 
 class CargoTrain < Train
@@ -5,3 +7,4 @@ class CargoTrain < Train
     wagon.is_a?(CargoWagon)
   end
 end
+

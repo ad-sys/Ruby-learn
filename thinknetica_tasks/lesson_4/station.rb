@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Требуется написать следующие классы:
 
 # Класс Station (Станция):
@@ -33,6 +35,3 @@ class Station
     @trains.delete(train)
   end
 end
-
-
-

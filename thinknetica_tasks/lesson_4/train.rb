@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Класс Train (Поезд):
 # Имеет номер (произвольная строка) и тип (грузовой, пассажирский)
 # и количество вагонов, эти данные указываются при создании
@@ -20,7 +22,7 @@
 class Train
   attr_reader :number, :type, :wagons, :speed
 
-  def initialize(number, type, wagons)
+  def initialize(number, type, _wagons)
     @number = number
     @type = type
     @wagons = []
@@ -35,7 +37,7 @@ class Train
     @speed = 0
   end
 
-# Вагоны Логика
+  # Вагоны Логика
 
   def add_wagon(wagon)
     return unless @speed.zero? && attachable_wagon?(wagon)
@@ -43,14 +45,13 @@ class Train
     @wagons += 1
   end
 
-
   def del_wagon
     return unless @speed.zero? && attachable_wagon?(wagon)
 
     @wagons -= 1
   end
 
-# Перемещение логика
+  # Перемещение логика
 
   def set_route(route)
     @route = route
@@ -59,7 +60,6 @@ class Train
   end
 
   def next_station
-
     @route.stations[@current_station_index + 1]
   end
 
