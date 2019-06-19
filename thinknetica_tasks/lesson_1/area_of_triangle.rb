@@ -1,13 +1,11 @@
-=begin
-Площадь треугольника. Площадь треугольника можно вычислить, зная его основание (a) и высоту (h) по формуле: 1/2*a*h. Программа должна запрашивать основание и высоту треугольника и возвращать его площадь.
-=end
+# frozen_string_literal: true
 
-print "Hi there! What is the height of your triangle (in cm)?"
+# Площадь треугольника. Площадь треугольника можно вычислить, зная его основание (a) и высоту (h) по формуле: 1/2*a*h. Программа должна запрашивать основание и высоту треугольника и возвращать его площадь.
+
+print 'Hi there! What is the height of your triangle (in cm)?'
 base = gets.to_i
 
-
-
-print "Cool, and what is the base of your triangle (in cm)?"
+print 'Cool, and what is the base of your triangle (in cm)?'
 height = gets.to_i
 
 area = 0.5 * base * height

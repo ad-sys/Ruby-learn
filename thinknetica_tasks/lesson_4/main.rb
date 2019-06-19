@@ -18,6 +18,7 @@ class Main
 
   # Метод который запускает основной цикл меню
   def run
+
     loop do
 
       show_main_menu
@@ -64,11 +65,14 @@ class Main
   end
 
   def create_train
-    puts 'Please type in the train name'
+    puts 'Please type in the train number'
     name = gets.chomp
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.chomp
-    case when 1
+    case type
+    when 1 then @trains << PassengerTrain.new(number)
+    when 2 then @trains << CargoTrain.new(number)
+    end
 
   end
 end

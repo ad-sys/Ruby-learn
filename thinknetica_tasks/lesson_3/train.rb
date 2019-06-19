@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Класс Train (Поезд):
 # Имеет номер (произвольная строка) и тип (грузовой, пассажирский)
 # и количество вагонов, эти данные указываются при создании
@@ -35,7 +37,7 @@ class Train
     @speed = 0
   end
 
-# Вагоны Логика
+  # Вагоны Логика
 
   def add_wagon
     return unless @speed.zero?
@@ -49,7 +51,7 @@ class Train
     @wagons -= 1
   end
 
-# Перемещение логика
+  # Перемещение логика
 
   def set_route(route)
     @route = route
@@ -59,7 +61,6 @@ class Train
   end
 
   def next_station
-
     @route.stations[@current_station_index + 1]
   end
 
@@ -83,6 +84,7 @@ class Train
 
   def move_rewind
     return if previous_station.nil?
+
     current_station.depart(self)
     previous_station.accept_train(self)
     @current_station_index -= 1

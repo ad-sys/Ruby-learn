@@ -20,9 +20,9 @@
 # на основе маршрута
 #  passenger
 class Train
-  attr_reader :number, :type, :wagons, :speed
+  attr_reader :number, :speed
 
-  def initialize(number, type, _wagons)
+  def initialize(number)
     @number = number
     @type = type
     @wagons = []
@@ -88,4 +88,5 @@ class Train
     previous_station.accept_train(self)
     @current_station_index -= 1
   end
+
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Класс Route (Маршрут):
 # Имеет начальную
 # и конечную станцию, а также список промежуточных станций.
@@ -39,5 +41,4 @@ class Route
   def print_all_stations
     route.stations.each { |station| puts station.name }
   end
-
 end

@@ -6,4 +6,5 @@ class PassengerWagon < Wagon
   def initialize(_type)
     @type = :pass
   end
+
 end
