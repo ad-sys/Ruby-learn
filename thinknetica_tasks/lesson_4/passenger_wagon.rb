@@ -3,7 +3,7 @@
 require_relative 'wagon'
 
 class PassengerWagon < Wagon
-  def initialize(_type)
+  def initialize
     @type = :pass
   end
 
