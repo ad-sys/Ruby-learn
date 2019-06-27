@@ -27,7 +27,7 @@ class Main
       when 1 then create_station
       when 2 then create_train
       when 3 then attach_wagon
-      when 4 then manage_route_stations
+      when 4 then create_route
       when 5 then assign_route
       when 6 then add_wagon
       when 7 then delete_wagon
@@ -74,7 +74,11 @@ class Main
     when 2 then @trains << CargoTrain.new(number)
     end
 
-def  manage_route_stations
+    def attach_wagon
+
+    end
+
+def  create_route
   puts "Please put the route's first station number"
   @stations.each_with_index {|station, index| puts "#{index } --- #{ station.name}"}
   first_station_index = gets.to_i
