@@ -45,11 +45,11 @@ class Train
 
   end
 
-  def del_wagon
+  def del_wagon(wagon)
 
     return unless @speed.zero? && attachable_wagon?(wagon)
 
-    @wagons << wagon
+    @wagons.delete(wagon)
   end
 
   # Перемещение логика

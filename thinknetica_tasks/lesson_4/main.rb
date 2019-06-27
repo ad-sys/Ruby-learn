@@ -66,7 +66,7 @@ class Main
 
   def create_train
     puts 'Please type in the train number'
-    name = gets.chomp
+    number = gets.chomp
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.chomp
     case type
@@ -74,6 +74,19 @@ class Main
     when 2 then @trains << CargoTrain.new(number)
     end
 
+def  manage_route_stations
+  puts "Please put the route's first station number"
+  @stations.each_with_index {|station, index| puts "#{index } --- #{ station.name}"}
+  first_station_index = gets.to_i
+  puts "Please put the route's last station number"
+  last_station_index = gets.to_i
+  if first_station_index.empty? || last_station_index.empty?
+    puts("Please put first and last station numbers")
+  else
+    route = Route.new(@stations[first_station_index], @st@stations[last_station_index])
+    @routes << route
   end
 end
+  end
+  end
 
