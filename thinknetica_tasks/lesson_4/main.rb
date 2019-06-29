@@ -70,10 +70,10 @@ class Main
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.chomp
 
-    case type
-      when 1 then @trains << PassengerTrain.new(number)
-      when 2 then @trains << CargoTrain.new(number)
-    end
+      case type
+        when 1 then @trains << PassengerTrain.new(number)
+        when 2 then @trains << CargoTrain.new(number)
+      end
   end
 
 
@@ -98,10 +98,11 @@ class Main
     show_trains(trains)
     puts "Choose the train you want to attach the wagon to"
     select_from_trains(trains)
-    if Wagon.type == :cargo
-      train.add_wagon(PassengerWagon.new)
-    else
-      train.add_wagon(CargoWagon.new)
+      if Wagon.type == :cargo
+        train.add_wagon(PassengerWagon.new(number))
+      else
+        train.add_wagon(CargoWagon.new(number))
+      end
 
   end
 
