@@ -95,6 +95,13 @@ class Main
 
 
   def attach_wagon
+    show_trains(trains)
+    puts "Choose the train you want to attach the wagon to"
+    select_from_trains(trains)
+    if Wagon.type == :cargo
+      train.add_wagon(PassengerWagon.new)
+    else
+      train.add_wagon(CargoWagon.new)
 
   end
 
