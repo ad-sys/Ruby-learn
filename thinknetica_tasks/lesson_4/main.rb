@@ -44,17 +44,17 @@ class Main
   private
 
   def show_main_menu
-  puts "1. Create station"
-  puts "2. Create train"
-  puts "3. Create route"
-  puts "4. Add station to route"
-  puts "5. Delete station from route"
-  puts "6. Assign the route to the train."
-  puts "7. Attach wagon to the train."
-  puts "8. Detach wagon of the train."
-  puts "9. Move the train throughout the route."
-  puts "10. View a list of trains."
-  puts "0. Quit the program."
+    puts "1. Create station"
+    puts "2. Create train"
+    puts "3. Create route"
+    puts "4. Add station to route"
+    puts "5. Delete station from route"
+    puts "6. Assign the route to the train."
+    puts "7. Attach wagon to the train."
+    puts "8. Detach wagon of the train."
+    puts "9. Move the train throughout the route."
+    puts "10. View a list of trains."
+    puts "0. Quit the program."
   end
 
   def create_station
@@ -69,29 +69,71 @@ class Main
     number = gets.chomp
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.chomp
+
     case type
-    when 1 then @trains << PassengerTrain.new(number)
-    when 2 then @trains << CargoTrain.new(number)
+      when 1 then @trains << PassengerTrain.new(number)
+      when 2 then @trains << CargoTrain.new(number)
     end
+  end
 
-    def attach_wagon
 
+
+  def create_route
+    puts "Please put the route's first station number"
+    show_stations(@stations)
+    first_station = select_from_stations(@stations)
+    show_stations(@stations)
+    last_station = select_from_stations(@stations)
+
+      if first_station.nil? || last_station.nil?
+        puts("Please put first and last station numbers")
+      else
+        @routes << Route.new(first_station, last_station)
+      end
+  end
+
+
+
+  def attach_wagon
+
+  end
+
+  def show_stations(stations)
+    stations.each.with_index(1) do |station, index|
+    puts "#{index} --- #{station.name}"
     end
+  end
 
-def  create_route
-  puts "Please put the route's first station number"
-  @stations.each_with_index {|station, index| puts "#{index } --- #{ station.name}"}
-  first_station_index = gets.to_i
-  puts "Please put the route's last station number"
-  last_station_index = gets.to_i
-  if first_station_index.empty? || last_station_index.empty?
-    puts("Please put first and last station numbers")
-  else
-    route = Route.new(@stations[first_station_index], @st@stations[last_station_index])
-    @routes << route
+  def show_trains(trains)
+    trains.each.with_index(1) do |train, index|
+    puts "#{index} --- #{train.name}"
+    end
   end
-end
+
+  def show_routes(routes)
+    routes.each.with_index(1) do |route, index|
+    puts "#{index} --- #{route.name}"
+    end
   end
+
+  def select_from_stations(stations)
+    index = gets.to_i - 1
+    return if index.negative?
+    stations[index - 1]
+  end
+
+  def select_from_trains(trains)
+    index = gets.to_i - 1
+    return if index.negative?
+    trains[index - 1]
+  end
+
+  def select_from_routes(routes)
+    index = gets.to_i - 1
+    return if index.negative?
+    routes[index - 1]
+  end
+
 end
 
 
