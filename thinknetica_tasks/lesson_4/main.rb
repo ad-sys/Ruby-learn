@@ -68,12 +68,12 @@ class Main
     puts 'Please type in the train number'
     number = gets.chomp
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
-    type = gets.chomp
+    type = gets.to_i
 
-      case type
-        when 1 then @trains << PassengerTrain.new(number)
-        when 2 then @trains << CargoTrain.new(number)
-      end
+    case type
+    when 1 then @trains << PassengerTrain.new(number)
+    when 2 then @trains << CargoTrain.new(number)
+    end
   end
 
 
@@ -81,9 +81,9 @@ class Main
   def create_route
     puts "Please put the route's first station number"
     show_stations(@stations)
-    first_station = select_from_stations(@stations)
+    first_station = select_from_array(@stations)
     show_stations(@stations)
-    last_station = select_from_stations(@stations)
+    last_station = select_from_array(@stations)
 
       if first_station.nil? || last_station.nil?
         puts("Please put first and last station numbers")
@@ -97,9 +97,9 @@ class Main
   def attach_wagon
     show_trains(trains)
     puts "Choose the train you want to attach the wagon to"
-    select_from_trains(trains)
-      if Wagon.type == :cargo
-        train.add_wagon(PassengerWagon.new(number))
+    select_from_array(trains)
+      if train.type == :cargo
+        @trains[index].add_wagon(PassengerWagon.new(number))
       else
         train.add_wagon(CargoWagon.new(number))
       end
@@ -124,22 +124,10 @@ class Main
     end
   end
 
-  def select_from_stations(stations)
+  def select_from_array(array)
     index = gets.to_i - 1
     return if index.negative?
-    stations[index - 1]
-  end
-
-  def select_from_trains(trains)
-    index = gets.to_i - 1
-    return if index.negative?
-    trains[index - 1]
-  end
-
-  def select_from_routes(routes)
-    index = gets.to_i - 1
-    return if index.negative?
-    routes[index - 1]
+    array[index - 1]
   end
 
 end
