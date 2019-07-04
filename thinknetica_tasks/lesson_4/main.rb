@@ -99,7 +99,8 @@ class Main
     puts 'Choose the train you want to detach the wagon from'
     selected_train = select_from_array(trains)
     return if selected_train.nil?
-    selected_train.del_wagon
+
+    selected_train.del_wagon()
     p trains
   end
 

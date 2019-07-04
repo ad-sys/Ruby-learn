@@ -39,15 +39,14 @@ class Train
   # Вагоны Логика
 
   def add_wagon(wagon)
-    return unless @speed.zero? && attachable_wagon?(wagon)
+    return unless @speed.zero?
 
     @wagons << wagon
   end
 
   def del_wagon(wagon)
-    return unless @speed.zero? && attachable_wagon?(wagon)
-
-    @wagons.delete(wagon)
+    return unless @speed.zero?
+    @wagons.pop
   end
 
   # Перемещение логика
