@@ -75,6 +75,7 @@ class Main
     when 1 then trains << PassengerTrain.new(number)
     when 2 then trains << CargoTrain.new(number)
     end
+    puts trains
   end
 
   def create_route
@@ -88,6 +89,7 @@ class Main
       puts('Please put first and last station numbers')
     else
       @routes << Route.new(first_station, last_station)
+      puts routes
     end
   end
 
@@ -102,6 +104,7 @@ class Main
 
     elsif selected_train.is_a?(CargoTrain)
       selected_train.add_wagon(CargoWagon.new)
+      puts trains
     end
   end
 
