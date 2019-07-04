@@ -44,7 +44,7 @@ class Train
     @wagons << wagon
   end
 
-  def del_wagon(wagon)
+  def del_wagon
     return unless @speed.zero?
     @wagons.pop
   end
