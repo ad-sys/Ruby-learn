@@ -26,14 +26,14 @@ class Main
       case choice
       when 1 then create_station
       when 2 then create_train
-      when 3 then attach_wagon
-      when 4 then create_route
+      when 3 then create_route
+      #when 4 then delete_route_station
       when 5 then add_route_station
-      # when 6 then add_wagon
-      # when 7 then delete_wagon
+      when 7 then add_wagon
+      when 8 then delete_wagon
       #  when 8 then move_train
       #  when 9 then view_trains
-      #    when 0 then quit
+      #  when 0 then quit
 
       else
         wrong_choice
@@ -62,7 +62,7 @@ class Main
     puts "Please put the station's name"
     name = gets.chomp
     @stations << Station.new(name)
-    puts @stations
+    puts stations
   end
 
   def create_train
@@ -75,6 +75,31 @@ class Main
     when 1 then trains << PassengerTrain.new(number)
     when 2 then trains << CargoTrain.new(number)
     end
+    puts trains
+  end
+
+
+  def add_wagon
+    show_array(trains)
+    puts 'Choose the train you want to attach the wagon to'
+    selected_train = select_from_array(trains)
+    return if selected_train.nil?
+
+    if selected_train.is_a?(PassengerTrain)
+      selected_train.add_wagon(PassengerWagon.new)
+
+    elsif selected_train.is_a?(CargoTrain)
+      selected_train.add_wagon(CargoWagon.new)
+      puts trains
+    end
+  end
+
+  def delete_wagon
+    show_array(trains)
+    puts 'Choose the train you want to detach the wagon from'
+    selected_train = select_from_array(trains)
+    return if selected_train.nil?
+    selected_train.del_wagon
     puts trains
   end
 
@@ -92,26 +117,6 @@ class Main
       puts routes
     end
   end
-
-  def attach_wagon
-    show_array(trains)
-    puts 'Choose the train you want to attach the wagon to'
-    selected_train = select_from_array(trains)
-    return if selected_train.nil?
-
-    if selected_train.is_a?(PassengerTrain)
-      selected_train.add_wagon(PassengerWagon.new)
-
-    elsif selected_train.is_a?(CargoTrain)
-      selected_train.add_wagon(CargoWagon.new)
-      puts trains
-    end
-  end
-
-  def delete_wagon
-
-  end
-
   def show_array(array)
     array.each.with_index(1) do |item, index|
       puts "#{index} --- #{item.info}"
