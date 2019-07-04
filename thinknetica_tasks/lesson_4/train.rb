@@ -24,7 +24,6 @@ class Train
 
   def initialize(number)
     @number = number
-    @type = type
     @wagons = []
     @speed = 0
   end
