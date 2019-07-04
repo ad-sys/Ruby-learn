@@ -41,12 +41,11 @@ class Train
 
   def add_wagon(wagon)
     return unless @speed.zero? && attachable_wagon?(wagon)
-    @wagons << wagon
 
+    @wagons << wagon
   end
 
   def del_wagon(wagon)
-
     return unless @speed.zero? && attachable_wagon?(wagon)
 
     @wagons.delete(wagon)
@@ -90,4 +89,7 @@ class Train
     @current_station_index -= 1
   end
 
+  def info
+    number
+  end
 end

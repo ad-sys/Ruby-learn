@@ -41,4 +41,8 @@ class Route
   def print_all_stations
     route.stations.each { |station| puts station.name }
   end
+
+  def info
+    [first.name, last.name].join('-')
+  end
 end
