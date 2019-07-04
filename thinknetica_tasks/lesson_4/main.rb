@@ -62,7 +62,7 @@ class Main
     puts "Please put the station's name"
     name = gets.chomp
     @stations << Station.new(name)
-    puts stations
+    p stations
   end
 
   def create_train
@@ -75,7 +75,7 @@ class Main
     when 1 then trains << PassengerTrain.new(number)
     when 2 then trains << CargoTrain.new(number)
     end
-    puts trains
+    p trains
   end
 
 
@@ -90,8 +90,8 @@ class Main
 
     elsif selected_train.is_a?(CargoTrain)
       selected_train.add_wagon(CargoWagon.new)
-      puts trains
     end
+    p trains
   end
 
   def delete_wagon
@@ -100,7 +100,7 @@ class Main
     selected_train = select_from_array(trains)
     return if selected_train.nil?
     selected_train.del_wagon
-    puts trains
+    p trains
   end
 
   def create_route
@@ -114,7 +114,7 @@ class Main
       puts('Please put first and last station numbers')
     else
       @routes << Route.new(first_station, last_station)
-      puts routes
+      p routes
     end
   end
   def show_array(array)
