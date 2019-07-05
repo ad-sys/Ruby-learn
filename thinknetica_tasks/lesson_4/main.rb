@@ -142,6 +142,4 @@ class Main
     selected_station = select_from_array(stations)
     selected_route.add_station(selected_station)
   end
-
-
-
+end
