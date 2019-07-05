@@ -12,15 +12,15 @@
 class Route
   attr_reader :stations
 
-  def initialize(first, last)
-    @stations = [first, last]
+  def initialize(first_station, last_station)
+    @stations = [first_station, last_station]
   end
 
-  def first
+  def first_station
     stations.first
   end
 
-  def last
+  def last_station
     stations.last
   end
 
@@ -29,7 +29,7 @@ class Route
   end
 
   def border?(station)
-    station == first || station == last
+    station == first_station || station == last_station
   end
 
   def delete_station(station)
@@ -43,6 +43,6 @@ class Route
   end
 
   def info
-    [first.name, last.name].join('-')
+    [first_station.name, last_station.name].join('-')
   end
 end

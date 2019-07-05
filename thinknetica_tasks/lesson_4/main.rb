@@ -27,16 +27,17 @@ class Main
       when 1 then create_station
       when 2 then create_train
       when 3 then create_route
-      when 4 then delete_route_station
-      when 5 then add_route_station
+      when 4 then add_route_station
+      when 5 then delete_route_station
+      when 6 then assign_route_to_train
       when 7 then add_wagon
       when 8 then delete_wagon
-      #  when 8 then move_train
-      #  when 9 then view_trains
+      when 9 then move_train
+      when 10 then view_trains_and_stations
       #  when 0 then quit
 
       else
-        wrong_choice
+        return 'wrong choice'
 
       end
     end
@@ -48,13 +49,13 @@ class Main
     puts '1. Create station'
     puts '2. Create train'
     puts '3. Create route'
-    puts '4. Delete station from route'
-    puts '5. Add station to route'
+    puts '4. Add station to route'
+    puts '5. Delete station from route'
     puts '6. Assign the route to the train.'
     puts '7. Attach wagon to the train.'
     puts '8. Detach wagon of the train.'
     puts '9. Move the train throughout the route.'
-    puts '10. View a list of trains.'
+    puts '10. View a list of stations and trains.'
     puts '0. Quit the program.'
   end
 
@@ -130,7 +131,7 @@ class Main
     index = gets.to_i - 1
     return if index.negative?
 
-    array[index - 1]
+    array[index]
   end
 
   def add_route_station
@@ -154,12 +155,57 @@ class Main
     show_array(routes)
     puts 'Select route to delete the station from'
     selected_route = select_from_array(routes)
-    return if selected_station.nil?
+    return if selected_route.nil?
+
     show_array(stations)
 
     puts 'Select station to delete from selected route'
     selected_station = select_from_array(stations)
     selected_route.delete_station(selected_station)
+    p routes
   end
 
+  def assign_route_to_train
+    show_array(routes)
+    puts 'Select the route you want assign the train to'
+    selected_route = select_from_array(routes)
+    return if selected_route.nil?
+
+    show_array(trains)
+
+    puts 'Select the train you want assign the selected route'
+    selected_train = select_from_array(trains)
+    selected_train.set_route(selected_route)
+    p routes
+  end
+
+  def move_train
+    if routes
+    show_array(trains)
+    puts 'Select train to move to the next/previous station'
+    selected_train = select_from_array(trains)
+    return if selected_train.nil?
+
+    puts "Choose the direction to move to:
+      1. Forward
+      2. Backward"
+    choice = gets.to_i
+    if choice == 1
+      selected_train.move_forward
+    elsif choice == 2
+      selected_train.move_rewind
+    end
+    end
+    p routes
+  end
+
+  def view_trains_and_stations
+    puts 'Stations list: '
+    stations.each { |station| puts station.name }
+    puts 'Trains list: '
+    trains.each { |train| puts "Train number: #{train.number} type: #{train.class}" }
+  end
 end
+
+
+
