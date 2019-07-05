@@ -100,7 +100,7 @@ class Main
     selected_train = select_from_array(trains)
     return if selected_train.nil?
 
-    selected_train.del_wagon(trains)
+    selected_train.del_wagon
     p trains
   end
 
