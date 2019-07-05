@@ -27,7 +27,7 @@ class Main
       when 1 then create_station
       when 2 then create_train
       when 3 then create_route
-      #when 4 then delete_route_station
+      when 4 then delete_route_station
       when 5 then add_route_station
       when 7 then add_wagon
       when 8 then delete_wagon
@@ -108,6 +108,7 @@ class Main
     puts "Please put the route's first station number"
     show_array(@stations)
     first_station = select_from_array(@stations)
+    puts "Please put the route's last station number"
     show_array(@stations)
     last_station = select_from_array(@stations)
 
@@ -118,6 +119,7 @@ class Main
       p routes
     end
   end
+
   def show_array(array)
     array.each.with_index(1) do |item, index|
       puts "#{index} --- #{item.info}"
@@ -132,14 +134,32 @@ class Main
   end
 
   def add_route_station
-    show_array(routes)
-    puts 'Select route to add to station'
-    selected_route = select_from_array(routes)
-    return if selected_route.nil?
+    if routes.empty?
+      puts "You haven't created any routes yet"
+    else
+      show_array(routes)
+      puts 'Select route to add to station'
+      selected_route = select_from_array(routes)
+      return if selected_route.nil?
 
-    show_array(stations)
-    puts 'Select station to add to selected route'
-    selected_station = select_from_array(stations)
-    selected_route.add_station(selected_station)
+      show_array(stations)
+      puts 'Select station to add to selected route'
+      selected_station = select_from_array(stations)
+      selected_route.add_station(selected_station)
+      p routes
+    end
   end
+
+  def delete_route_station
+    show_array(routes)
+    puts 'Select route to delete the station from'
+    selected_route = select_from_array(routes)
+    return if selected_station.nil?
+    show_array(stations)
+
+    puts 'Select station to delete from selected route'
+    selected_station = select_from_array(stations)
+    selected_route.delete_station(selected_station)
+  end
+
 end
