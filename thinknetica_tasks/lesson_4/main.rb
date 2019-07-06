@@ -34,7 +34,7 @@ class Main
       when 8 then delete_wagon
       when 9 then move_train
       when 10 then view_trains_and_stations
-      #  when 0 then quit
+      when 0 then quit
 
       else
         return 'wrong choice'
@@ -107,11 +107,11 @@ class Main
 
   def create_route
     puts "Please put the route's first station number"
-    show_array(@stations)
-    first_station = select_from_array(@stations)
+    show_array(stations)
+    first_station = select_from_array(stations)
     puts "Please put the route's last station number"
-    show_array(@stations)
-    last_station = select_from_array(@stations)
+    show_array(stations)
+    last_station = select_from_array(stations)
 
     if first_station.nil? || last_station.nil?
       puts('Please put first and last station numbers')
@@ -157,11 +157,15 @@ class Main
     selected_route = select_from_array(routes)
     return if selected_route.nil?
 
-    show_array(stations)
+    show_array(routes.stations)
 
     puts 'Select station to delete from selected route'
-    selected_station = select_from_array(stations)
-    selected_route.delete_station(selected_station)
+    selected_station = select_from_array(routes.stations)
+    if selected_station.routes.nil?
+      selected_route[stations].delete_station(selected_station)
+    else
+      puts 'There is no such station in the route'
+    end
     p routes
   end
 
@@ -180,21 +184,15 @@ class Main
   end
 
   def move_train
-    if routes
     show_array(trains)
     puts 'Select train to move to the next/previous station'
     selected_train = select_from_array(trains)
-    return if selected_train.nil?
+    return if selected_train.nil? || selected_train.route.nil?
+    move_train_menu
 
-    puts "Choose the direction to move to:
-      1. Forward
-      2. Backward"
-    choice = gets.to_i
-    if choice == 1
-      selected_train.move_forward
-    elsif choice == 2
-      selected_train.move_rewind
-    end
+    case gets.to_i
+    when 1 then selected_train.move_forward
+    when 2 then selected_train.move_rewind
     end
     p routes
   end
@@ -203,7 +201,17 @@ class Main
     puts 'Stations list: '
     stations.each { |station| puts station.name }
     puts 'Trains list: '
-    trains.each { |train| puts "Train number: #{train.number} type: #{train.class}" }
+    stations.trains.each { |train| puts "Train number: #{train.number} type: #{train.class}" }
+  end
+
+  def move_train_menu
+    puts 'Choose the direction to move to: ' \
+    '1. Forward ' \
+    '2. Backward'
+  end
+
+  def quit
+    exit!
   end
 end
 
