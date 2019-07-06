@@ -155,17 +155,11 @@ class Main
     show_array(routes)
     puts 'Select route to delete the station from'
     selected_route = select_from_array(routes)
-    return if selected_route.nil?
-
-    show_array(routes.stations)
+    show_array(selected_route.stations)
 
     puts 'Select station to delete from selected route'
-    selected_station = select_from_array(routes.stations)
-    if selected_station.routes.nil?
-      selected_route.delete_station(selected_station)
-    else
-      puts 'There is no such station in the route'
-    end
+    selected_station = select_from_array(selected_route.stations)
+    selected_route.delete_station(selected_station)
     p routes
   end
 
