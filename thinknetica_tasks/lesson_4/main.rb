@@ -193,7 +193,9 @@ class Main
 
   def view_trains_and_stations
     stations.each do |station|
-      puts "#{station.name} --- #{station.trains}"
+      puts "Station: #{station.name}"
+      puts 'Station trains:'
+      show_array(station.trains)
     end
   end
 
