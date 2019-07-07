@@ -192,16 +192,15 @@ class Main
   end
 
   def view_trains_and_stations
-    puts 'Stations list: '
-    stations.each { |station| puts station.name }
-    puts 'Trains list: '
-    stations.trains.each { |train| puts "Train number: #{train.number} type: #{train.class}" }
+    stations.each do |station|
+      puts "#{station.name} --- #{station.trains}"
+    end
   end
 
   def move_train_menu
     puts 'Choose the direction to move to: ' \
-    '1. Forward ' \
-    '2. Backward'
+      '1. Forward ' \
+      '2. Backward'
   end
 
   def quit

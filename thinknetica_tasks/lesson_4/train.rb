@@ -20,7 +20,7 @@
 # на основе маршрута
 #  passenger
 class Train
-  attr_reader :number, :speed
+  attr_reader :number, :speed, :route
 
   def initialize(number)
     @number = number
@@ -91,4 +91,5 @@ class Train
   def info
     number
   end
+
 end
