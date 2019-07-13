@@ -21,17 +21,17 @@
 #  passenger
 class Train
   attr_reader :number, :speed, :route
-  @@trains = []
+  @@trains = {}
 
   def initialize(number)
     @number = number
     @wagons = []
     @speed = 0
-    @@trains << self
+    @@trains[number] = self
   end
 
   def self.find(number)
-    @@trains.find {@@trains.number == number}
+    @@trains[number]
   end
 
   def gain_speed(speed)
