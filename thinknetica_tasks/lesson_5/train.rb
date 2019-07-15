@@ -20,6 +20,7 @@
 # на основе маршрута
 #  passenger
 class Train
+  include ManufacturerInfo
   attr_reader :number, :speed, :route
   @@trains = {}
 

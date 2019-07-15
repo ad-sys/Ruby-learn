@@ -14,13 +14,21 @@
 
 class Station
   attr_reader :trains, :name
+
+  @@stations = {}
+
   def initialize(name)
     @name = name
     @trains = []
+    @@stations[name] = self
   end
 
   def accept_train(train)
     @trains << train
+  end
+
+  def all
+    @@stations
   end
 
   def show_trains
