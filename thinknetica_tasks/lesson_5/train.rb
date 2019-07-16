@@ -19,6 +19,7 @@
 # Показывать предыдущую станцию, текущую, следующую,
 # на основе маршрута
 #  passenger
+require_relative 'manufacturer_info'
 class Train
   include ManufacturerInfo
   attr_reader :number, :speed, :route
