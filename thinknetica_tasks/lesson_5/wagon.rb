@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 #
-require_relative ‘manufacturer_info’
+require_relative 'manufacturer_info'
 
 class Wagon
   include ManufacturerInfo

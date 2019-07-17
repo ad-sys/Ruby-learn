@@ -28,7 +28,7 @@ class Station
   end
 
   def all
-    @@stations
+    @@stations.values
   end
 
   def show_trains
