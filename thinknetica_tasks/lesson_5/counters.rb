@@ -5,24 +5,28 @@ module Counters
     base.send :include, InstanceMethods
   end
 
-  @@instances = 0
+  @instances = []
 
   module ClassMethods
     def  register_instance
+      @instances << self
 
     end
+  end
+  def all
+    @instances.length
   end
 
   module InstanceMethods
 
     def instances
-    @@instances
+      self.class.instances
     end
 
     protected
 
     def register_instance
-    @@instances += 1
+      self.class.instances += 1
     end
   end
 end
