@@ -5,7 +5,7 @@ module Counters
     @@instances
   end
 
-  private
+  protected
 
   def register_instance
     @@instances += 1
