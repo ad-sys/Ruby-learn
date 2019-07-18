@@ -8,21 +8,26 @@ module Counters
   @@instances = 0
 
   module ClassMethods
+    def  register_instance
 
+    end
   end
+
   module InstanceMethods
 
-  def instances
+    def instances
     @@instances
-  end
+    end
 
-  protected
+    protected
 
-  def register_instance
+    def register_instance
     @@instances += 1
-
+    end
   end
-
 end
+
+
+
 
 
