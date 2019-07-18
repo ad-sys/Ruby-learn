@@ -9,7 +9,10 @@
 # Может удалять промежуточную станцию из списка
 # Может выводить список всех станций по-порядку от начальной
 # до конечной
+require_relative 'counters'
+
 class Route
+  include Counters
   attr_reader :stations
 
   def initialize(first_station, last_station)

@@ -11,10 +11,11 @@
 # (см. ниже): кол-во грузовых, пассажирских
 # Может отправлять поезда (по одному за раз, при этом,
 # поезд удаляется из списка поездов, находящихся на станции).
+require_relative 'counters'
 
 class Station
   attr_reader :trains, :name
-
+  include Counters
   @@stations = {}
 
   def initialize(name)

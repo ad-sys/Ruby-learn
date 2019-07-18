@@ -20,8 +20,11 @@
 # на основе маршрута
 #  passenger
 require_relative 'manufacturer_info'
+require_relative 'counters'
+
 class Train
   include ManufacturerInfo
+  include Counters
   attr_reader :number, :speed, :route
   @@trains = {}
 
