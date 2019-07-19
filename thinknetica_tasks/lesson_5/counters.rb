@@ -1,23 +1,18 @@
-module Counters
 
+module Counters
   def self.included(base)
     base.extend ClassMethods
     base.send :include, InstanceMethods
   end
 
-  @instances = []
-
   module ClassMethods
+
     def  register_instance
-      @instances << self
-
+      @instances = 0
+      @instances += 1
     end
-  end
-  def all
-    @instances.length
-  end
 
-  module InstanceMethods
+    module InstanceMethods
 
     def instances
       self.class.instances
@@ -27,6 +22,8 @@ module Counters
 
     def register_instance
       self.class.instances += 1
+    end
+
     end
   end
 end
