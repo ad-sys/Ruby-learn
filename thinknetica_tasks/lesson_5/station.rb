@@ -29,7 +29,7 @@ class Station
     @trains << train
   end
 
-  def all
+  def self.all
     @@stations.values
   end
 
