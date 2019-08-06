@@ -36,7 +36,7 @@ class Main
       when 10 then view_trains_and_stations
       when 0 then quit
 
-      else
+      resque
         return 'wrong choice'
 
       end
@@ -64,11 +64,16 @@ class Main
     name = gets.chomp
     @stations << Station.new(name)
     p stations
+  rescue RuntimeError => e
+    puts "#{e}"
+    puts "Please try again"
+    retry
   end
 
   def create_train
     puts 'Please type in the train number'
     number = gets.chomp
+    number_format =
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.to_i
 
@@ -77,6 +82,12 @@ class Main
     when 2 then trains << CargoTrain.new(number)
     end
     p trains
+  rescue RuntimeError => e
+    puts "#{e}"
+    puts "Please try again"
+    retry
+  ensure
+    puts "Train is successfully created"
   end
 
 
@@ -119,6 +130,12 @@ class Main
       @routes << Route.new(first_station, last_station)
       p routes
     end
+  rescue RuntimeError => e
+    puts "#{e}"
+    puts "Please try again"
+    retry
+  ensure
+    puts "Route is successfully created"
   end
 
   def show_array(array)
