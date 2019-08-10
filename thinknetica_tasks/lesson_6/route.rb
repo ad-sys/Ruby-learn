@@ -52,13 +52,16 @@ class Route
 
   def valid?
     validate!
+    true
   rescue
     false
   end
 
+  FIRST_LAST_STATION_ERROR = "First and last stations could not be the same"
+  ONLY_STATIONS_ACCEPTED = "Route can only consist of stations"
   def validate!
-    raise "First and last stations could not be the same" if first_station == last_station
-    raise "Wrong stations format" if number !~ @number_format
+    raise FIRST_LAST_STATION_ERROR if first_station == last_station
+    raise ONLY_STATIONS_ACCEPTED if first_station.is_a?(stations) && last_station.is_a?(stations)
     true
   end
 

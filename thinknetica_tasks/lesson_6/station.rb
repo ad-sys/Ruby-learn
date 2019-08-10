@@ -19,8 +19,8 @@ class Station
   @@stations = {}
 
   def initialize(name)
-    validate!
     @name = name
+    validate!
     @trains = []
     @@stations[name] = self
     register_instance
@@ -52,12 +52,16 @@ class Station
 
   def valid?
     validate!
+    true
   rescue
     false
   end
 
+  STATION_NAME_ERROR = "Station name should not be empty"
+
   def validate!
-    raise "Station name should not be empty" if @name.empty?
+    raise STATION_NAME_ERROR if @name.empty?
+
     true
   end
 
