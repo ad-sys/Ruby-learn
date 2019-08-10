@@ -35,10 +35,8 @@ class Main
       when 9 then move_train
       when 10 then view_trains_and_stations
       when 0 then quit
-
-      resque
+      else
         return 'wrong choice'
-
       end
     end
   end
@@ -62,18 +60,19 @@ class Main
   def create_station
     puts "Please put the station's name"
     name = gets.chomp
+    validate!
     @stations << Station.new(name)
     p stations
   rescue RuntimeError => e
-    puts "#{e}"
+    puts e.message
     puts "Please try again"
     retry
   end
 
   def create_train
+    validate!
     puts 'Please type in the train number'
     number = gets.chomp
-    number_format =
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.to_i
 
@@ -83,7 +82,7 @@ class Main
     end
     p trains
   rescue RuntimeError => e
-    puts "#{e}"
+    puts e.message
     puts "Please try again"
     retry
   ensure
@@ -117,6 +116,7 @@ class Main
   end
 
   def create_route
+    validate!
     puts "Please put the route's first station number"
     show_array(stations)
     first_station = select_from_array(stations)
@@ -131,7 +131,7 @@ class Main
       p routes
     end
   rescue RuntimeError => e
-    puts "#{e}"
+    puts e.message
     puts "Please try again"
     retry
   ensure

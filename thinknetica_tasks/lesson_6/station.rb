@@ -19,6 +19,7 @@ class Station
   @@stations = {}
 
   def initialize(name)
+    validate!
     @name = name
     @trains = []
     @@stations[name] = self
@@ -48,4 +49,16 @@ class Station
   def info
     name
   end
+
+  def valid?
+    validate!
+  rescue
+    false
+  end
+
+  def validate!
+    raise "Station name should not be empty" if @name.empty?
+    true
+  end
+
 end

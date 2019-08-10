@@ -49,4 +49,17 @@ class Route
   def info
     [first_station.name, last_station.name].join('-')
   end
+
+  def valid?
+    validate!
+  rescue
+    false
+  end
+
+  def validate!
+    raise "First and last stations could not be the same" if first_station == last_station
+    raise "Wrong stations format" if number !~ @number_format
+    true
+  end
+
 end

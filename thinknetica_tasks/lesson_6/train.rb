@@ -33,6 +33,8 @@ class Train
     @wagons = []
     @speed = 0
     @@trains[number] = self
+    @number_format = /[a-z0-9]{3}.*[a-z0-9]{2}\z/i
+    validate!
     register_instance
   end
 
@@ -104,6 +106,17 @@ class Train
     number
   end
 
+  def valid?
+    validate!
+  rescue
+    false
+  end
+
+  def validate!
+    raise "Number should be at least 5 symbols" if (number.to_s.length) < 5
+    raise "Wrong number format" if number !~ @number_format
+    true
+  end
 end
 
 
