@@ -28,7 +28,7 @@ class Train
 
   NUM_SYMBOL_QTY_ERROR = "Number should be at least 5 symbols"
   WRONG_NUM_FORMAT_ERROR = "Wrong number format"
-  NUMBER_FORMAT = /[a-z0-9]{3}.*[a-z0-9]{2}\z/i
+  NUMBER_FORMAT = /^[a-zA-Z0-9]{3}.*\w{2}\z/i
 
   attr_reader :number, :speed, :route
   @@trains = {}
