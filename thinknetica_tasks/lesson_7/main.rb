@@ -97,10 +97,14 @@ class Main
     return if selected_train.nil?
 
     if selected_train.is_a?(PassengerTrain)
-      selected_train.add_wagon(PassengerWagon.new)
+      puts 'Put the seats quantity'
+      seats = gets.chomp
+      selected_train.add_wagon(PassengerWagon.new(seats))
 
     elsif selected_train.is_a?(CargoTrain)
-      selected_train.add_wagon(CargoWagon.new)
+      puts 'Put the wagon volume'
+      volume = gets.chomp
+      selected_train.add_wagon(CargoWagon.new(volume))
     end
     p trains
   end
