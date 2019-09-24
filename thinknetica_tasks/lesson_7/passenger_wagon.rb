@@ -23,9 +23,4 @@ class PassengerWagon < Wagon
   def show_free_seats
     @number_of_seats - @occupied_seats
   end
-
-  def show_occupied_seats
-    @occupied_seats
-  end
-
 end

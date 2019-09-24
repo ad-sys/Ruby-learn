@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require_relative 'wagon'
 
 class CargoWagon < Wagon
@@ -24,9 +23,4 @@ class CargoWagon < Wagon
   def show_free_volume
     @volume - @occupied_volume
   end
-
-  def show_occupied_volume
-    @occupied_volume
-  end
-
 end
