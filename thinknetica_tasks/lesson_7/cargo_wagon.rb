@@ -6,6 +6,11 @@ class CargoWagon < Wagon
     'Volume'
   end
 
+  def occupy_capacity(capacity_number)
+    @free_capacity = @free_capacity - capacity_number
+    @occupied_capacity = @capacity - @free_capacity
+  end
+
   def type
     :cargo
   end

@@ -62,6 +62,10 @@ class Train
     @wagons << wagon
   end
 
+  def each_wagon
+    wagons.each { |wagon| yield(wagon) }
+  end
+
   def del_wagon
     return unless @speed.zero?
 

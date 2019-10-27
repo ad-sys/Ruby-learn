@@ -103,8 +103,8 @@ class Main
 
     elsif selected_train.is_a?(CargoTrain)
       puts 'Put the wagon volume'
-      volume = gets.chomp
-      selected_train.add_wagon(CargoWagon.new(volume))
+      capacity = gets.chomp
+      selected_train.add_wagon(CargoWagon.new(capacity))
     end
     p trains
   end
@@ -118,6 +118,7 @@ class Main
     selected_train.del_wagon
     p trains
   end
+
 
   def create_route
     validate!

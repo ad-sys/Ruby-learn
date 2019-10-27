@@ -63,6 +63,10 @@ class Station
     false
   end
 
+  def each_train
+    trains.each { |train| yield(train) }
+  end
+
   STATION_NAME_ERROR = "Station name should not be empty"
 
   def validate!

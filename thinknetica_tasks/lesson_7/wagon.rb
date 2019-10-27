@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 #
 require_relative 'manufacturer_info'
+require_relative 'passenger_wagon'
+require_relative 'cargo_wagon'
 
 class Wagon
   # include ManufacturerInfo
@@ -17,20 +19,9 @@ class Wagon
     @type = type
   end
 
-  def occupy_capacity(capacity_number = 1)
-    @free_capacity = @free_capacity - capacity_number
-    @occupied_capacity = @capacity - @free_capacity
-  end
 
   def show_free_capacity
     @capacity - @occupied_capacity
   end
 
-  def countable_field
-    raise NotImplementedError
-  end
-
-  def type
-    raise NotImplementedError
-  end
 end
