@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 #
 require_relative 'manufacturer_info'
-require_relative 'passenger_wagon'
-require_relative 'cargo_wagon'
 
 class Wagon
   # include ManufacturerInfo
