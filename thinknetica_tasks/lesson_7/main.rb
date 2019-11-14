@@ -60,7 +60,6 @@ class Main
     puts "Please put the station's name"
     name = gets.chomp
     station = Station.new(name)
-    station.validate!
     @stations << station
     p @stations
   rescue RuntimeError => e
@@ -72,7 +71,6 @@ class Main
   def create_train
     puts 'Please type in the train number'
     number = gets.chomp
-    number.validate!
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.to_i
 
@@ -121,7 +119,6 @@ class Main
 
 
   def create_route
-    validate!
     puts "Please put the route's first station number"
     show_array(stations)
     first_station = select_from_array(stations)
