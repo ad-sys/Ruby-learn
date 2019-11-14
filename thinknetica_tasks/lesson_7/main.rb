@@ -70,9 +70,9 @@ class Main
   end
 
   def create_train
-    validate!
     puts 'Please type in the train number'
     number = gets.chomp
+    number.validate!
     puts 'What is the train type? put 1 for Passenger Train OR put 2 for Cargo Train'
     type = gets.to_i
 
