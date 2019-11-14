@@ -59,9 +59,10 @@ class Main
   def create_station
     puts "Please put the station's name"
     name = gets.chomp
-    validate!
-    @stations << Station.new(name)
-    p stations
+    station = Station.new(name)
+    station.validate!
+    @stations << station
+    p @stations
   rescue RuntimeError => e
     puts e.message
     puts "Please try again"
