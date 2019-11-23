@@ -33,6 +33,7 @@ class Main
       when 8 then delete_wagon
       when 9 then move_train
       when 10 then view_trains_and_stations
+      when 11 then occupy
       when 0 then quit
       else
         return 'wrong choice'
@@ -53,6 +54,7 @@ class Main
     puts '8. Detach wagon of the train.'
     puts '9. Move the train throughout the route.'
     puts '10. View a list of stations and trains.'
+    puts '11. Occupy wagon capacity'
     puts '0. Quit the program.'
   end
 
@@ -107,6 +109,9 @@ class Main
     p trains
   end
 
+  def show_wagon
+
+  end
   def delete_wagon
     show_array(trains)
     puts 'Choose the train you want to detach the wagon from'
@@ -196,6 +201,24 @@ class Main
     p routes
   end
 
+  def occupy
+    show_array(trains)
+    puts 'Choose the train you want to change its wagon capacity'
+    selected_train = select_from_array(trains)
+    return if selected_train.nil?
+
+    if selected_train.is_a?(PassengerTrain)
+      puts '1 place will be occupied. Choose the wagon'
+      show_array(trains.wagons)
+      selected_train.occupy_seat
+
+    elsif selected_train.is_a?(CargoTrain)
+      puts 'Put the wagon volume'
+      capacity = gets.chomp
+      selected_train.add_wagon(CargoWagon.new(capacity))
+    end
+    p trains
+  end
   def move_train
     show_array(trains)
     puts 'Select train to move to the next/previous station'

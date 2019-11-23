@@ -8,8 +8,8 @@ class Wagon
 
   def initialize(capacity)
 
-    raise StandardError, "#{countable_field} should be an Integer number" unless capacity.is_a?(Integer)
-    raise StandardError, "#{countable_field} should be more than 0" if capacity <= 0
+    #raise StandardError, "#{countable_field} should be an Integer number" unless countable_field.is_a?(Integer)
+    #raise StandardError, "#{countable_field} should be more than 0" if countable_field <= 0
 
     @capacity = capacity
     @occupied_capacity = 0
