@@ -34,6 +34,7 @@ class Main
       when 9 then move_train
       when 10 then view_trains_and_stations
       when 11 then occupy
+      when 12 then show_wagon
       when 0 then quit
       else
         return 'wrong choice'
@@ -55,6 +56,7 @@ class Main
     puts '9. Move the train throughout the route.'
     puts '10. View a list of stations and trains.'
     puts '11. Occupy wagon capacity'
+    puts '12. Show wagons'
     puts '0. Quit the program.'
   end
 
@@ -103,7 +105,7 @@ class Main
 
     elsif selected_train.is_a?(CargoTrain)
       puts 'Put the wagon volume'
-      capacity = gets.chomp
+      capacity = gets.to_i
       selected_train.add_wagon(CargoWagon.new(capacity))
     end
     p trains
@@ -244,6 +246,7 @@ class Main
       puts "Station: #{station.name}"
       puts 'Station trains:'
       show_array(station.trains)
+
     end
   end
 
@@ -252,6 +255,11 @@ class Main
       '1. Forward ' \
       '2. Backward'
   end
+  #Выводить список вагонов у поезда (Номер вагона (можно назначать автоматически), тип вагона, кол-во свободных и занятых мест (для пассажирского вагона) или кол-во свободного и занятого объема (для грузовых вагонов).), используя созданные методы
+  def show_wagons
+    show_array(trains.wagons)
+  end
+  #Выводить список поездов на станции (в указанном выше формате), используя  созданные методы
 
   def quit
     exit!
