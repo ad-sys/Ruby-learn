@@ -30,7 +30,7 @@ class Train
   WRONG_NUM_FORMAT_ERROR = "Wrong number format"
   NUMBER_FORMAT = /^[a-zA-Z0-9]{3}.*\w{2}\z/i
 
-  attr_reader :number, :speed, :route
+  attr_reader :number, :speed, :route, :wagons
   @@trains = {}
 
   def initialize(number)

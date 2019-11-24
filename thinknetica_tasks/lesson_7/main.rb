@@ -203,14 +203,15 @@ class Main
 
   def occupy
     show_array(trains)
-    puts 'Choose the train you want to change its wagon capacity'
+    puts 'Select the train to change its wagon capacity'
     selected_train = select_from_array(trains)
     return if selected_train.nil?
 
     if selected_train.is_a?(PassengerTrain)
       puts '1 place will be occupied. Choose the wagon'
-      show_array(trains.wagons)
-      selected_train.occupy_seat
+      show_array(selected_train.wagons)
+      selected_wagon = select_from_array(selected_train.wagons)
+      selected_wagon.occupy_seat
 
     elsif selected_train.is_a?(CargoTrain)
       puts 'Put the wagon volume'
