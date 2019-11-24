@@ -224,6 +224,7 @@ class Main
     end
     p trains
   end
+
   def move_train
     show_array(trains)
     puts 'Select train to move to the next/previous station'
