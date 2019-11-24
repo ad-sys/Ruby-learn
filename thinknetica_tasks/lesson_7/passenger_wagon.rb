@@ -15,4 +15,5 @@ class PassengerWagon < Wagon
   def type
     :pass
   end
+
 end
