@@ -98,7 +98,7 @@ class Main
 
     if selected_train.is_a?(PassengerTrain)
       puts 'Put the seats quantity'
-      seats = gets.chomp
+      seats = gets.chomp.to_i
       selected_train.add_wagon(PassengerWagon.new(seats))
 
     elsif selected_train.is_a?(CargoTrain)
@@ -209,18 +209,18 @@ class Main
 
     if selected_train.is_a?(PassengerTrain)
       puts '1 place will be occupied. Choose the wagon'
-      puts 'Uto4ka crya 1'
       show_array(selected_train.wagons)
-      puts 'Uto4ka crya 2'
       selected_wagon = select_from_array(selected_train.wagons)
-      puts 'Uto4ka crya 3'
       selected_wagon.occupy_seat
-      puts 'Uto4ka crya 4'
 
     elsif selected_train.is_a?(CargoTrain)
-      puts 'Put the wagon volume'
-      capacity = gets.chomp
-      selected_train.add_wagon(CargoWagon.new(capacity))
+      puts 'Please choose the wagon'
+      show_array(selected_train.wagons)
+      selected_wagon = select_from_array(selected_train.wagons)
+      puts 'Put the wagon volume to occupy'
+      capacity = gets.to_i
+      puts 'Calculating'
+      selected_wagon.occupy_capacity(capacity)
     end
     p trains
   end
