@@ -15,3 +15,4 @@ class CargoWagon < Wagon
     :cargo
   end
 end
+
