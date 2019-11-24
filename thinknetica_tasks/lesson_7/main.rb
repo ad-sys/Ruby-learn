@@ -209,9 +209,13 @@ class Main
 
     if selected_train.is_a?(PassengerTrain)
       puts '1 place will be occupied. Choose the wagon'
+      puts 'Uto4ka crya 1'
       show_array(selected_train.wagons)
+      puts 'Uto4ka crya 2'
       selected_wagon = select_from_array(selected_train.wagons)
+      puts 'Uto4ka crya 3'
       selected_wagon.occupy_seat
+      puts 'Uto4ka crya 4'
 
     elsif selected_train.is_a?(CargoTrain)
       puts 'Put the wagon volume'
