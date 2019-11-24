@@ -18,3 +18,4 @@ class PassengerWagon < Wagon
   end
 
 end
+
