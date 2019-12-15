@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'wagon'
 
 class CargoWagon < Wagon
@@ -7,7 +8,7 @@ class CargoWagon < Wagon
   end
 
   def occupy_capacity(capacity_number)
-    @free_capacity = @free_capacity - capacity_number
+    @free_capacity -= capacity_number
     @occupied_capacity = @capacity - @free_capacity
   end
 
@@ -15,4 +16,3 @@ class CargoWagon < Wagon
     :cargo
   end
 end
-

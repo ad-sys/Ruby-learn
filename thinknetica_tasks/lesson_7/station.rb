@@ -14,15 +14,12 @@
 require_relative 'counters'
 
 class Station
-
   include Counters
 
   STATION_NAME_ERROR = 'Station name should not be empty'
 
   attr_reader :trains, :name
   @@stations = {}
-
-
 
   def initialize(name)
     @name = name
@@ -59,7 +56,7 @@ class Station
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
@@ -70,5 +67,4 @@ class Station
   def validate!
     raise STATION_NAME_ERROR if @name.empty?
   end
-
 end

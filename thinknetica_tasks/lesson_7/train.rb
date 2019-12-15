@@ -26,9 +26,9 @@ class Train
   include ManufacturerInfo
   include Counters
 
-  NUM_SYMBOL_QTY_ERROR = "Number should be at least 5 symbols"
-  WRONG_NUM_FORMAT_ERROR = "Wrong number format"
-  NUMBER_FORMAT = /^[a-zA-Z0-9]{3}.*\w{2}\z/i
+  NUM_SYMBOL_QTY_ERROR = 'Number should be at least 5 symbols'
+  WRONG_NUM_FORMAT_ERROR = 'Wrong number format'
+  NUMBER_FORMAT = /^[a-zA-Z0-9]{3}.*\w{2}\z/i.freeze
 
   attr_reader :number, :speed, :route, :wagons
   @@trains = {}
@@ -117,14 +117,12 @@ class Train
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
   def validate!
-    raise NUM_SYMBOL_QTY_ERROR if (number.to_s.length) < 5
+    raise NUM_SYMBOL_QTY_ERROR if number.to_s.length < 5
     raise WRONG_NUM_FORMAT_ERROR if number !~ NUMBER_FORMAT
   end
 end
-
-

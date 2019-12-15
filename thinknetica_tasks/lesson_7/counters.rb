@@ -1,6 +1,6 @@
+# frozen_string_literal: true
 
 module Counters
-
   def self.included(base)
     base.extend ClassMethods
     base.send :include, InstanceMethods
@@ -12,11 +12,9 @@ module Counters
     def instances
       @instances ||= 0
     end
-
   end
 
   module InstanceMethods
-
     protected
 
     def register_instance
@@ -24,8 +22,3 @@ module Counters
     end
   end
 end
-
-
-
-
-

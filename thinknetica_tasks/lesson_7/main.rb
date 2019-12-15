@@ -68,7 +68,7 @@ class Main
     p @stations
   rescue RuntimeError => e
     puts e.message
-    puts "Please try again"
+    puts 'Please try again'
     retry
   end
 
@@ -85,12 +85,11 @@ class Main
     p trains
   rescue RuntimeError => e
     puts e.message
-    puts "Please try again"
+    puts 'Please try again'
     retry
   ensure
-    puts "Train is successfully created"
+    puts 'Train is successfully created'
   end
-
 
   def add_wagon
     show_array(trains)
@@ -111,9 +110,8 @@ class Main
     p trains
   end
 
-  def show_wagon
+  def show_wagon; end
 
-  end
   def delete_wagon
     show_array(trains)
     puts 'Choose the train you want to detach the wagon from'
@@ -123,7 +121,6 @@ class Main
     selected_train.del_wagon
     p trains
   end
-
 
   def create_route
     puts "Please put the route's first station number"
@@ -141,10 +138,10 @@ class Main
     end
   rescue RuntimeError => e
     puts e.message
-    puts "Please try again"
+    puts 'Please try again'
     retry
   ensure
-    puts "Route is successfully created"
+    puts 'Route is successfully created'
   end
 
   def show_array(array)
@@ -232,6 +229,7 @@ class Main
     puts 'Select train to move to the next/previous station'
     selected_train = select_from_array(trains)
     return if selected_train.nil? || selected_train.route.nil?
+
     move_train_menu
 
     case gets.to_i
@@ -246,7 +244,6 @@ class Main
       puts "Station: #{station.name}"
       puts 'Station trains:'
       show_array(station.trains)
-
     end
   end
 
@@ -255,18 +252,14 @@ class Main
       '1. Forward ' \
       '2. Backward'
   end
-  #Выводить список вагонов у поезда (Номер вагона (можно назначать автоматически), тип вагона, кол-во свободных и занятых мест (для пассажирского вагона) или кол-во свободного и занятого объема (для грузовых вагонов).), используя созданные методы
+
+  # Выводить список вагонов у поезда (Номер вагона (можно назначать автоматически), тип вагона, кол-во свободных и занятых мест (для пассажирского вагона) или кол-во свободного и занятого объема (для грузовых вагонов).), используя созданные методы
   def show_wagons
     show_array(trains.wagons)
   end
-  #Выводить список поездов на станции (в указанном выше формате), используя  созданные методы
+  # Выводить список поездов на станции (в указанном выше формате), используя  созданные методы
 
   def quit
     exit!
   end
 end
-
-
-
-
-

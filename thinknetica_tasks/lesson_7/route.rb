@@ -12,9 +12,8 @@
 require_relative 'counters'
 
 class Route
-
-  FIRST_LAST_STATION_ERROR = "First and last stations could not be the same"
-  ONLY_STATIONS_ACCEPTED = "Route can only consist of stations"
+  FIRST_LAST_STATION_ERROR = 'First and last stations could not be the same'
+  ONLY_STATIONS_ACCEPTED = 'Route can only consist of stations'
 
   include Counters
   attr_reader :stations
@@ -57,7 +56,7 @@ class Route
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
@@ -65,5 +64,4 @@ class Route
     raise FIRST_LAST_STATION_ERROR if first_station == last_station
     raise ONLY_STATIONS_ACCEPTED unless stations.all? { |station| station.is_a?(station) }
   end
-
 end
